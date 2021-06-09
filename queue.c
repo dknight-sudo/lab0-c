@@ -23,8 +23,18 @@ queue_t *q_new()
 /* Free all storage used by queue */
 void q_free(queue_t *q)
 {
-    /* TODO: How about freeing the list elements and the strings? */
-    /* Free queue structure */
+    if (!q)
+        return;
+    list_ele_t *temp = q->head;
+    list_ele_t *nex = temp->next;
+    while (nex) {
+        free(temp->value);
+        free(temp);
+        temp = nex;
+        nex = nex->next;
+    }
+    free(temp->value);
+    free(temp);
     free(q);
 }
 
