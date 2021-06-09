@@ -57,8 +57,12 @@ bool q_insert_head(queue_t *q, char *s)
         return false;
     }
     newh->value = new_value;
-    newh->next = q->head;
-    q->head = newh;
+    if (q->head) {
+        newh->next = q->head;
+        q->head = newh;
+    } else {
+        q->head = q->tail = newh;
+    }
     return true;
 }
 
