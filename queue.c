@@ -55,6 +55,8 @@ bool q_insert_head(queue_t *q, char *s)
     if (!q)
         return NULL;
     newh = malloc(sizeof(list_ele_t));
+    if (!newh)
+        return false;
     char *new_value = strdup(s);
     if (!new_value) {
         free(newh);
