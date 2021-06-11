@@ -25,6 +25,10 @@ void q_free(queue_t *q)
 {
     if (!q)
         return;
+    if (q->size == 0) {
+        free(q);
+        return;
+    }
     list_ele_t *temp = q->head;
     list_ele_t *nex = temp->next;
     while (nex) {
