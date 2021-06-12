@@ -112,7 +112,7 @@ bool q_insert_tail(queue_t *q, char *s)
 bool q_remove_head(queue_t *q, char *sp, size_t bufsize)
 {
     if (!q || q->size == 0)
-        return true;
+        return false;
     int len = strlen(q->head->value);
     len = bufsize - 1 > len ? len : bufsize - 1;
     memcpy(sp, q->head->value, len);
